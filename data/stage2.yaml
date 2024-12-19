@@ -1,0 +1,57 @@
+datasets:
+  # website
+  - json_path: data/aguvis/train/mind2web-l1.json
+    images_folder: "mind2web/"
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/mind2web-l2.json
+    images_folder: "mind2web/"
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/mind2web-l2.json
+    images_folder: "mind2web/"
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/guiact-web-single.json
+    images_folder: "guiact-web-single/images/"
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/guiact-web-multi-l1.json
+    images_folder: "guiact-web-multi/images/"
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/guiact-web-multi-l2.json
+    images_folder: "guiact-web-multi/images/"
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/miniwob-l1.json
+    images_folder: "miniwob/images"
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/miniwob-l2.json
+    images_folder: "miniwob/images/"
+    sampling_strategy: "all"
+  # mobile
+  - json_path: data/aguvis/train/coat.json
+    images_folder: "coat/images/"
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/android_control.json
+    images_folder: "android_control/images/"
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/gui-odyssey-l1.json
+    images_folder: "gui-odyssey/images/"
+    sampling_strategy: "random:33%"
+  - json_path: data/aguvis/train/gui-odyssey-l2.json
+    images_folder: "gui-odyssey/images/"
+    sampling_strategy: "random:33%"
+  - json_path: data/aguvis/train/gui-odyssey-l2.json
+    images_folder: "gui-odyssey/images/"
+    sampling_strategy: "random:33%"
+  - json_path: data/aguvis/train/amex-l1.json
+    images_folder: "amex/images/"
+    sampling_strategy: "random:33%"
+  - json_path: data/aguvis/train/amex-l2.json
+    images_folder: "amex/images/"
+    sampling_strategy: "random:33%"
+  - json_path: data/aguvis/train/amex-l2.json
+    images_folder: "amex/images/"
+    sampling_strategy: "random:33%"
+  - json_path: data/aguvis/train/aitw-l1.json
+    images_folder: "aitw/images"
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/aitw-l2.json
+    images_folder: "aitw/images/"
+    sampling_strategy: "all"

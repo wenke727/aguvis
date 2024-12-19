@@ -1,0 +1,28 @@
+datasets:
+  # web
+  - json_path: data/aguvis/train/seeclick.json
+    images_folder: seeclick/seeclick_web_imgs/
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/guienv.json
+    images_folder: guienvs/images/
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/webui350k.json
+    images_folder: webui350k/images/
+    sampling_strategy: "all"
+  # desktop
+  - json_path: data/aguvis/train/omniact.json
+    images_folder: omniact/images/
+    sampling_strategy: "all"
+  # mobile
+  - json_path: data/aguvis/train/widget_captioning.json
+    images_folder: widget_captioning/images/
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/ricosca.json
+    images_folder: ricosca/images/
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/ui_refexp.json
+    images_folder: ui_refexp/images/
+    sampling_strategy: "all"
+  - json_path: data/aguvis/train/ricoig16k.json
+    images_folder: ricoig16k/images/
+    sampling_strategy: "all"
