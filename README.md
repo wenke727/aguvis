@@ -24,6 +24,18 @@ Our framework demonstrates state-of-the-art performance in both offline and real
 
 https://github.com/user-attachments/assets/83f2c281-961c-4e2d-90dd-8cb1857adfb6
 
+### Mobile Tasks (Android World)
+
+https://github.com/user-attachments/assets/9a0147b2-e966-4500-8494-8e64d4b1b890
+
+### Web Browsing Tasks (Mind2Web-Live)
+
+https://github.com/user-attachments/assets/f78b2263-5145-4ada-9556-a3173eb71144
+
+### Computer-use Tasks (OSWorld)
+
+https://github.com/user-attachments/assets/d1083c7d-992b-4cf4-8b07-3c9065821179
+
 ## Getting Started
 
 ### Installation
