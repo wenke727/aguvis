@@ -1,7 +1,7 @@
 # AGUVIS
 
 <p align="center">
-        📑 <a  href="https://huggingface.co/papers/2412.04454" target="_blank">Paper</a> &nbsp&nbsp  </a> | &nbsp&nbsp 🌐 <a href="https://aguvis-project.github.io/" target="_blank">Project Page</a> &nbsp&nbsp | &nbsp&nbsp 💾 <a href="https://huggingface.co/collections/xlangai/aguvis-agent-6764ae6d343c62af95b0a742" target="_blank"> AGUVIS Data Collection</a> &nbsp&nbsp
+        📑 <a  href="https://huggingface.co/papers/2412.04454" target="_blank">Paper</a> &nbsp&nbsp  </a> | &nbsp&nbsp 🌐 <a href="https://aguvis-project.github.io/" target="_blank">Project Page</a> &nbsp&nbsp | &nbsp&nbsp 💾 <a href="https://huggingface.co/collections/ranpox/aguvis-unified-pure-vision-gui-agents-6764e2bc343c62af95c209d8" target="_blank"> AGUVIS Data Collection</a> &nbsp&nbsp
 <br>
 
 <p align="center">
