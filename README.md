@@ -22,6 +22,7 @@ AGUVIS is a unified pure vision-based framework for autonomous GUI agents that c
 
 Our framework demonstrates state-of-the-art performance in both offline and real-world online scenarios, offering a more efficient and generalizable approach to GUI automation.
 
+https://github.com/user-attachments/assets/83f2c281-961c-4e2d-90dd-8cb1857adfb6
 
 ## Getting Started
 
