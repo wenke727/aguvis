@@ -1,27 +1,21 @@
 import argparse
-import requests
-
-from typing import List, Literal, Optional
 from io import BytesIO
-from PIL import Image
-from transformers import Qwen2VLForConditionalGeneration, Qwen2VLProcessor
-from qwen_vl_utils import process_vision_info
+from typing import List, Literal, Optional
 
-from aguvis.constants import (
-    chat_template,
-    grounding_system_message,
-    agent_system_message,
-    user_instruction,
-    until
-)
+import requests
+from PIL import Image
+from qwen_vl_utils import process_vision_info
+from transformers import Qwen2VLForConditionalGeneration, Qwen2VLProcessor
+
+from aguvis.constants import agent_system_message, chat_template, grounding_system_message, until, user_instruction
 
 
 def load_image(image_file):
-    if image_file.startswith('http://') or image_file.startswith('https://'):
+    if image_file.startswith("http://") or image_file.startswith("https://"):
         response = requests.get(image_file)
-        image = Image.open(BytesIO(response.content)).convert('RGB')
+        image = Image.open(BytesIO(response.content)).convert("RGB")
     else:
-        image = Image.open(image_file).convert('RGB')
+        image = Image.open(image_file).convert("RGB")
     return image
 
 
@@ -42,11 +36,11 @@ def generate_response(
     low_level_instruction: Optional[str] = None,
     mode: Literal["self-plan", "force-plan", "grounding"] = "self-plan",
     temperature: float = 0,
-    max_new_tokens: int = 1024
+    max_new_tokens: int = 1024,
 ):
     system_message = {
         "role": "system",
-        "content": grounding_system_message if mode == "grounding" else agent_system_message
+        "content": grounding_system_message if mode == "grounding" else agent_system_message,
     }
 
     if isinstance(previous_actions, list):
@@ -61,12 +55,12 @@ def generate_response(
             overall_goal=instruction,
             previous_actions=previous_actions,
             low_level_instruction=low_level_instruction,
-        )
+        ),
     }
 
     if low_level_instruction:
         # If low-level instruction is provided
-        # We enforce to use ``Action: {low_level_instruction} to guide generation``
+        # We enforce using "Action: {low_level_instruction} to guide generation"
         recipient_text = f"<|im_start|>assistant<|recipient|>all\nAction: {low_level_instruction}\n"
     elif mode == "force-plan":
         recipient_text = "<|im_start|>assistant<|recipient|>all\nThought: "
@@ -80,24 +74,15 @@ def generate_response(
     # Generate response
     messages = [system_message, user_message]
     text = processor.apply_chat_template(
-        messages,
-        tokenize=False,
-        add_generation_prompt=False,
-        chat_template=chat_template
+        messages, tokenize=False, add_generation_prompt=False, chat_template=chat_template
     )
     text += recipient_text
     image_inputs, video_inputs = process_vision_info(messages)
-    inputs = processor(
-        text=[text],
-        images=image_inputs,
-        videos=video_inputs,
-        padding=True,
-        return_tensors="pt"
-    )
+    inputs = processor(text=[text], images=image_inputs, videos=video_inputs, padding=True, return_tensors="pt")
     inputs = inputs.to(model.device)
     cont = model.generate(**inputs, temperature=temperature, max_new_tokens=max_new_tokens)
 
-    cont_toks = cont.tolist()[0][len(inputs.input_ids[0]):]
+    cont_toks = cont.tolist()[0][len(inputs.input_ids[0]) :]
     text_outputs = tokenizer.decode(cont_toks, skip_special_tokens=True).strip()
     for term in until:
         if len(term) > 0:
@@ -120,7 +105,7 @@ def main(args):
         args.low_level_instruction,
         args.mode,
         args.temperature,
-        args.max_new_tokens
+        args.max_new_tokens,
     )
     print(response)
 
@@ -130,7 +115,11 @@ if __name__ == "__main__":
     parser.add_argument("--model_path", type=str, required=True)
     parser.add_argument("--device", type=str, default="cuda")
     parser.add_argument("--image_path", type=str, default="examples/AndroidControl.png")
-    parser.add_argument("--instruction", type=str, default="In the BBC News app , Turn ON the news alert notification for the BBC News app.")
+    parser.add_argument(
+        "--instruction",
+        type=str,
+        default="In the BBC News app , Turn ON the news alert notification for the BBC News app.",
+    )
     parser.add_argument("--previous_actions", type=str, required=False)
     parser.add_argument("--low_level_instruction", type=str, required=False)
     parser.add_argument("--mode", type=str, default="self-plan")
