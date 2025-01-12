@@ -1,7 +1,7 @@
 # AGUVIS
 
 <p align="center">
-        📑 <a  href="https://huggingface.co/papers/2412.04454" target="_blank">Paper</a> &nbsp&nbsp  </a> | &nbsp&nbsp 🌐 <a href="https://aguvis-project.github.io/" target="_blank">Project Page</a> &nbsp&nbsp | &nbsp&nbsp 💾 <a href="https://huggingface.co/collections/xlangai/aguvis-agent-6764ae6d343c62af95b0a742" target="_blank"> AGUVIS Data Collection</a> &nbsp&nbsp
+        📑 <a  href="https://huggingface.co/papers/2412.04454" target="_blank">Paper</a> &nbsp&nbsp  </a> | &nbsp&nbsp 🌐 <a href="https://aguvis-project.github.io/" target="_blank">Project Page</a> &nbsp&nbsp | &nbsp&nbsp 💾 <a href="https://huggingface.co/collections/ranpox/aguvis-unified-pure-vision-gui-agents-6764e2bc343c62af95c209d8" target="_blank"> AGUVIS Data Collection</a> &nbsp&nbsp
 <br>
 
 <p align="center">
@@ -22,6 +22,19 @@ AGUVIS is a unified pure vision-based framework for autonomous GUI agents that c
 
 Our framework demonstrates state-of-the-art performance in both offline and real-world online scenarios, offering a more efficient and generalizable approach to GUI automation.
 
+https://github.com/user-attachments/assets/83f2c281-961c-4e2d-90dd-8cb1857adfb6
+
+### Mobile Tasks (Android World)
+
+https://github.com/user-attachments/assets/9a0147b2-e966-4500-8494-8e64d4b1b890
+
+### Web Browsing Tasks (Mind2Web-Live)
+
+https://github.com/user-attachments/assets/f78b2263-5145-4ada-9556-a3173eb71144
+
+### Computer-use Tasks (OSWorld)
+
+https://github.com/user-attachments/assets/d1083c7d-992b-4cf4-8b07-3c9065821179
 
 ## Getting Started
 
@@ -41,7 +54,7 @@ conda activate aguvis
 
 3. Install PyTorch and dependencies:
 ```bash
-conda install pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 pytorch-cuda=12.1 -c pytorch -c nvidia
+conda install pytorch torchvision torchaudio pytorch-cuda -c pytorch -c nvidia
 pip install -e .
 ```
 
@@ -64,6 +77,21 @@ pip install -e .
 2. Start training:
 ```bash
 bash scripts/train.sh
+```
+
+### Inference
+
+1. Configure your inference settings:
+   - Open `scripts/inference.sh`
+   - Set the `MODEL_PATH` variable to specify your model path
+   - Set the `IMAGE_PATH` variable to specify your image path
+   - Set the `INSTRUCTION` variable to specify your instruction
+   - Set the `PREVIOUS_ACTIONS` variable to specify your previous actions or leave it empty
+   - Set the `LOW_LEVEL_INSTRUCTION` variable to specify your low-level instruction or leave it empty
+
+2. Start inference:
+```bash
+bash scripts/inference.sh
 ```
 
 ## Checklist

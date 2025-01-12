@@ -192,7 +192,7 @@ def train(attn_implementation="flash_attention_2"):
 
     trainer = AGUVISTrainer(
         model=model,
-        tokenizer=tokenizer,
+        processing_class=data_args.processor,
         args=training_args,
         **data_module,
     )
