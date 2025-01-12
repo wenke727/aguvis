@@ -1,3 +1,6 @@
+import sys
+sys.path.append("./src")
+
 import pathlib
 from dataclasses import dataclass, field
 from typing import Dict, Optional, Sequence
@@ -10,6 +13,7 @@ from transformers import (
     Qwen2VLForConditionalGeneration,
     Qwen2VLProcessor,
 )
+from loguru import logger
 
 from aguvis.constants import IGNORE_INDEX
 from aguvis.dataset import LazySupervisedDataset
@@ -22,6 +26,8 @@ torch.multiprocessing.set_sharing_strategy("file_system")
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 local_rank = None
 
+# stage1: 数量 969,597, token数量 1.1B 1,191,297,571, 平均长度1228 tokens
+# stage2: 数量 423,035
 
 @dataclass
 class ModelArguments:

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 LLM_VERSION=Qwen2-VL-7B-Instruct
-LLM_PATH="/opt/nas/p/wenke/.cache/huggingface/hub/models--Qwen--Qwen2-VL-7B-Instruct/snapshots/cacb254f5b750fa289048fe807983c9e02e0a028"
-SFT_TASK="stage1"
+LLM_PATH="Qwen/Qwen2-VL-7B-Instruct"
+SFT_TASK="stage2"
 SAVE_DIR=results/aguvis/
 IMAGE_FOLDER=data/aguvis/images/
 
@@ -10,7 +10,13 @@ SFT_DATA_YAML=data/${SFT_TASK}.yaml
 SFT_RUN_NAME="${LLM_VERSION}-sft-${SFT_TASK}"
 echo "SFT_RUN_NAME: ${SFT_RUN_NAME}"
 
-DISTRIBUTED_ARGS="
+# Define WORLD_SIZE (number of nodes)
+WORLD_SIZE=1  # Adjust as necessary for multi-node setup
+RANK=0  # Adjust for distributed training, typically for the first node
+MASTER_ADDR=127.0.0.1
+MASTER_PORT=29600
+
+DISTRIBUTED_ARGS="\
     --nproc_per_node 8 \
     --nnodes ${WORLD_SIZE} \
     --node_rank ${RANK} \
@@ -21,7 +27,9 @@ export ACCELERATE_CPU_AFFINITY=1
 export TOKENIZERS_PARALLELISM=false
 export WANDB_API_KEY=c23bde849c64215088012dbabff2e9ef57479e23
 
+LLM_PATH=${SAVE_DIR}/checkpoints/${LLM_VERSION}-sft-stage1
 printenv
+echo $LLM_PATH
 
 torchrun $DISTRIBUTED_ARGS train.py \
     --deepspeed ./scripts/zero2.json \
@@ -44,7 +52,6 @@ torchrun $DISTRIBUTED_ARGS train.py \
     --warmup_ratio 0.03 \
     --lr_scheduler_type "cosine" \
     --logging_steps 10 \
-    --tf32 True \
     --model_max_length 8192 \
     --gradient_checkpointing True \
     --dataloader_num_workers 16 \

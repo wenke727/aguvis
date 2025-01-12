@@ -1,3 +1,6 @@
+./data/aguvis
+diff.diff
+
 # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,python,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,python,visualstudiocode
 
@@ -246,3 +249,6 @@ wandb/
 results/*
 data/train/*
 data/images/*
+
+.env
+*.env
